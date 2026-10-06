@@ -1,0 +1,73 @@
+:root {
+    /* Colores tomados del documento (Bootstrap) */
+    --brand: #0d6efd;       /* barra, encabezado del modal, botones Guardar */
+    --brand-dark: #0b5ed7;  /* hover del azul */
+    --brand-soft: #cff4fc;  /* encabezado de las tablas */
+    --marca: #ffc107;       /* titulo de la barra */
+}
+
+body {
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.text-farmacia { color: var(--brand); }
+
+/* Barra de navegacion */
+.navbar-farmacia {
+    background: var(--brand);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+.navbar-farmacia .navbar-brand { color: var(--marca); }
+.navbar-farmacia .navbar-brand:hover { color: var(--marca); }
+.navbar-farmacia .nav-link { opacity: .85; }
+.navbar-farmacia .nav-link:hover,
+.navbar-farmacia .nav-link.active { opacity: 1; font-weight: 600; }
+
+/* Insignias de rol */
+.badge.rol-administrador { background: #f59e0b; color: #1f2937; }
+.badge.rol-moderador { background: #38bdf8; color: #0c4a6e; }
+.badge.rol-usuario { background: #e5e7eb; color: #374151; }
+
+/* Botones */
+.btn-farmacia {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+    font-weight: 600;
+}
+.btn-farmacia:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: #fff; }
+
+/* Login / registro */
+.auth-wrap { display: grid; place-items: center; padding: 48px 16px; }
+.auth-card { width: 100%; max-width: 420px; border: 0; border-radius: 16px; }
+.auth-icon {
+    width: 56px; height: 56px; border-radius: 16px; margin: 0 auto;
+    display: grid; place-items: center; font-size: 1.6rem; color: #fff;
+    background: var(--brand);
+}
+
+/* Tarjetas del menu */
+.menu-card {
+    display: block; height: 100%; padding: 24px; text-decoration: none; color: inherit;
+    background: #fff; border-radius: 14px; border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, .05);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s;
+}
+.menu-card:hover { transform: translateY(-3px); border-color: var(--brand); box-shadow: 0 12px 26px rgba(13, 110, 253, .18); color: inherit; }
+.menu-card i { font-size: 2rem; color: var(--brand); }
+.menu-card p { margin: 0; color: #64748b; font-size: .92rem; }
+
+/* Tablas */
+.table-farmacia thead th {
+    background: var(--brand-soft); color: #000;
+    font-size: .78rem; text-transform: uppercase; letter-spacing: .04em;
+    border-bottom: 1px solid #000;
+}
+
+.modal-header-farmacia { background: var(--brand); color: #fff; }
+
+/* Menus desplegables (Ventas / Compras / Almacen) */
+.navbar-farmacia .dropdown-menu { border: 0; box-shadow: 0 10px 24px rgba(2, 6, 23, .2); }
+.navbar-farmacia .dropdown-item.active,
+.navbar-farmacia .dropdown-item:active { background: var(--brand); color: #fff; }

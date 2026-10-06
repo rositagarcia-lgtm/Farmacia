@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+<% const info = {
+    clientes: ['bi-person-vcard', 'Registra y administra a los clientes de la farmacia.'],
+    ventas: ['bi-receipt', 'Registra órdenes de venta y su detalle de medicamentos.'],
+    compras: ['bi-cart-check', 'Órdenes de compra a laboratorios con su detalle y total.'],
+    laboratorios: ['bi-building', 'Datos de los laboratorios proveedores.'],
+    medicamentos: ['bi-capsule', 'Inventario de medicamentos, precios y stock.'],
+    tipos: ['bi-tags', 'Categorías de medicamentos.'],
+    especialidades: ['bi-heart-pulse', 'Especialidades médicas de cada medicamento.']
+}; %>
+<main class="container py-4">
+    <div class="mb-4">
+        <h1 class="h3 mb-1">Hola, <%= user.nombre %> 👋</h1>
+        <p class="text-muted mb-0">Menú principal · Rol: <strong><%= user.role %></strong></p>
+    </div>
+
+    <% menuNav.forEach(function (s) { %>
+    <h2 class="h6 text-uppercase text-muted mt-4 mb-2"><%= s.titulo %></h2>
+    <div class="row g-3">
+        <% s.items.forEach(function (i) { %>
+        <div class="col-md-6 col-lg-4">
+            <a class="menu-card" href="/<%= i.clave %>">
+                <i class="bi <%= info[i.clave][0] %>"></i>
+                <h3 class="h5"><%= i.titulo %></h3>
+                <p><%= info[i.clave][1] %></p>
+            </a>
+        </div>
+        <% }); %>
+    </div>
+    <% }); %>
+
+    <% if (user.role === 'administrador') { %>
+    <h2 class="h6 text-uppercase text-muted mt-4 mb-2">Administración</h2>
+    <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+            <a class="menu-card" href="/usuarios">
+                <i class="bi bi-people"></i>
+                <h3 class="h5">Usuarios</h3>
+                <p>Gestiona cuentas y asigna roles (administrador, moderador, usuario).</p>
+            </a>
+        </div>
+    </div>
+    <% } %>
+
+    <div class="card mt-4 border-0 shadow-sm">
+        <div class="card-body">
+            <h2 class="h6 text-uppercase text-muted mb-3">Permisos de tu rol</h2>
+            <ul class="mb-0">
+                <li>Consultar medicamentos, clientes y órdenes de venta: <strong>Sí</strong></li>
+                <li>Crear y editar registros, compras y laboratorios: <strong><%= user.role !== 'usuario' ? 'Sí' : 'No' %></strong></li>
+                <li>Eliminar registros y gestionar usuarios: <strong><%= user.role === 'administrador' ? 'Sí' : 'No' %></strong></li>
+            </ul>
+        </div>
+    </div>
+</main>
+<%- include('partials/footer') %>
